@@ -4,11 +4,19 @@
 2. Update your package lists by running the following command:
       ```sudo apt update```
 3. Install Sublime Text. You can install Sublime Text using the following command:
+   * Using snap:
       ```sudo snap install sublime```
-   Or, ```sudo apt install sublime-text```
-4. Install the C++ compiler. The C++ compiler that you will use is g++. You can install it using the following command:
+   * or, Using apt(execute all the commands one by one):
+      ```
+      wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+      sudo apt-get install apt-transport-https
+      echo "deb https://download.sublimetext.com/ apt/stable/" |  sudo tee /etc/apt/sources.list.d/sublime-text.list
+      apt-get update  
+      sudo apt install sublime-text
+      ```
+5. Install the C++ compiler. The C++ compiler that you will use is g++. You can install it using the following command:
       ```sudo apt install g++```
-5. Create a build system for Sublime Text. A build system is a set of instructions that Sublime Text uses to compile and run your C++ code.
+6. Create a build system for Sublime Text. A build system is a set of instructions that Sublime Text uses to compile and run your C++ code.
    You can create a build system by following these steps:
   a. Open Sublime Text.
   b. Go to Tools > Build System > New Build System.
