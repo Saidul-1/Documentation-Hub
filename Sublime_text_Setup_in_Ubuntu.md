@@ -3,15 +3,15 @@
 1. Open a terminal window.
 2. Update your package lists by running the following command:
       ```sudo apt update```
-3. Install Sublime Text. You can install Sublime Text using the following command:
+3. Install Sublime Text executing the following command:
    * Using snap:
       ```sudo snap install sublime```
-   * or, Using apt(execute all the commands one by one):
+   * or, Using apt(execute all the following commands one by one):
       ```
       wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
       sudo apt-get install apt-transport-https
       echo "deb https://download.sublimetext.com/ apt/stable/" |  sudo tee /etc/apt/sources.list.d/sublime-text.list
-      apt-get update  
+      sudo apt-get update  
       sudo apt install sublime-text
       ```
 5. Install the C++ compiler. The C++ compiler that you will use is g++. You can install it using the following command:
@@ -45,11 +45,7 @@
   * From the top menu, select View->Layout->Columns :3 or press Shift+Alt+3.
   * Now select View->Groups->Max columns: 2.
   * Add input.txt in top-right and output.txt in bottom-right.
-  * Now add your *.cpp file in the left column and (compile+run) using the shortcut ctrl+B.
+  * Now add your <File_Name>.cpp file in the left column and (compile + run) using the shortcut ctrl+B.
 
 <p align=center> >>>ENJOY COMPETITIVE PROGRAMMING<<< </p>
-
-
-
-
 
