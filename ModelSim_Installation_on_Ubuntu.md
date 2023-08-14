@@ -12,9 +12,9 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32ncurses6 l
 
 ### Installation
 
-* Download the ModelSim - Intel FPGA edition installer (both packages) from the [Intel homepage](https://download.altera.com/akdlm/software/acdsinst/20.1std.1/720/ib_installers/ModelSimSetup-20.1.1.720-linux.run). 
+* [Download](https://download.altera.com/akdlm/software/acdsinst/20.1std.1/720/ib_installers/ModelSimSetup-20.1.1.720-linux.run) the ModelSim - Intel FPGA edition installer. 
 
-* Open the folder/directory where the files has been downloaded
+* Open the folder/directory where the installer file has been downloaded
 
 * Make the installer executable
 
@@ -28,7 +28,7 @@ chmod +x ModelSimSetup-20.1.1.720-linux.run
 ./ModelSimSetup-20.1.1.720-linux.run
 ```
 
-We assume ModelSim to be installed to `/opt`. If this is the case, the binaries are in `/opt/modelsim_ase/bin/`. In order to work with these tools, you need to add this folder to the path variable. Therefore, add the following line to your terminal configuration file, e.g., `.bashrc` or `.zshrc`.
+We assume ModelSim to be installed to `/opt`. If this is the case, the binaries are in `/opt/modelsim_ase/bin/`. In order to work with these tools, you need to add this folder to the path variable. Therefore, add the following line to your terminal configuration file, e.g., `.bashrc` or `.zshrc` by executing the command in terminal.
 
 ```sh
 export PATH=$PATH:/opt/modelsim_ase/bin
