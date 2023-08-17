@@ -1,4 +1,4 @@
-<p align=center> <b></b>Install and Setup Sublime-text in Ubuntu </b></p>
+<p align=center> <b> Install and Setup Sublime-text in Ubuntu </b></p>
 
 1. Open a terminal window.
 2. Update your package lists by running the following command:
