@@ -1,0 +1,94 @@
+<!--- Basic Commands for the file system ---!>
+
+# Create new folder
+	mkdir
+# See the Present Working Directory
+	pwd
+# See all the files and folders
+	ls
+# See all the files and folders with hidden files
+	ls -a
+# Change the directory to an existing folder of the current directory
+	cd <folderName>
+# Go to the Super/previous folder of the current folder
+	cd ..
+	cd /..
+# Create a new file
+	touch <fileName>
+# Open a file
+	start <fileName>
+
+
+
+<!--- Git Local Commands ---!>
+[[WorkingDirectory-->StagingArea-->LocalRepository-->RemoteRepository]]
+[[	init	-->	add	-->	commit	-->	push	]]
+
+# Git configuration[E-mail and UserName]
+	git config --list	//See details about the git repo
+	git config --global user.name "<newUserName if you want to change. else,skip>"	//See or change userName and email
+	git config --global user.emain "<newUserEmail if you want to change. else,skip>"
+# Initialize git in the present working directory(pwd)
+	git init
+	git init -b <branchName>
+# See the current status and changes of files
+	git status
+# Discard the changes in working directory
+	git restore <fileName>
+# Stage the untracked files
+	git add <fileName>
+	git add .
+#Skip tracking some files
+ 	Create a txt file named ".gitignore"
+ 	write the file names in separate line into the file which should be untracked
+ 	*.extension will skip all the files with ".extension" extension
+	!<fileName> can be used for ".extension" extension after the previous line
+# Unstage the staged files
+	git restore --staged <fileName>
+# Commit files from staging area to Local repository
+	git commit -m "<Comments about the commit>"
+# See all the commits
+	git log
+	git log --oneline
+# Quite the log view
+	q
+# See the changes made since last commit
+	git diff HEAD^
+# See the changes of two different commit/branch
+	git diff <commitCode/branchName-1> <commitCode/branchName-2>
+# Set the HEAD to a different commit
+	git checkout <commit number>
+# Again go to the master/latest commit
+	git checkout <branchName e.g. master>
+
+<!--- Branch ---!>
+# View current branch as well as the branch list
+	git branch
+# Create new branch git branch
+	git branch <newBranchName>
+	git checkout -b <newBranchName>
+# Delete a branch
+	git branch -d <branchName>
+# Switch to a branch
+	git checkout <branchName>
+
+<!--- Local-Remote Link ---!>
+# Link with remote github repository
+	git remote add origin <https/ssh Remote_Url from the github repository page>
+# Verify if the repo linked
+	git remote -v
+# Push the changes/commit which is selected as HEAD
+	git push origin <branchName e.g. master>
+# Replace commit1 by commit2
+	git replace <commit1Number> <commit2Number>
+# Clone/Download a copy of a repository from remote to local
+	git clone <https/ssh Remote_Url from the github repository page>
+# Update the local repo with the changes in remote
+	without merge:  git fetch
+	with merge:		git pull
+
+<!--- SSH key ---!>
+# Generate SSH key
+	ssh-keygen
+# check SSH key
+	ls -al ~/.ssh
