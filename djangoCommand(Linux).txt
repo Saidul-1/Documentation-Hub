@@ -1,0 +1,89 @@
+##prerequisite:
+1. Install virtual environment
+	[pip install virtualenv]
+	see installed packages[pip list]
+	
+##Setup a new project:
+#Install virtual environment
+1. Create a folder for the new working environment and open the terminal in that location
+2. Create a new virtual environment for the project
+	[virtualenv <virtualEnvionmentName>]
+3. Activate the virtual environment:
+	Run the <virtualEnvironmentName>/bin/activate file
+	[source <virtualEnvironmentName>/bin/activate]
+	If activated, (<virtualEnvironmentName>) will be shown befor working directory location
+*Now, the python interpreter of the virtual environment has been activated. Until deactivation of the virtual environment, this interpreter will be used as the python interpreter instead of the main system's python interpreter.
+	To deactivate the virtual environment run [deactivate]
+#Install django
+1. Install django in the project folder(after activating the virtual environment)
+	[pip install django]
+	check whether django is in the list of pip installed packages[pip list]
+#Create project
+1. Run [django-admin startproject <projectName>]
+	It will create a project folder named <projectName> in the current directory. In the <projectName> folder, there will be a file(manage.py) and a folder(<projectName>). The inner folder has the same name and it must not be renamed.
+	 ভিতরের myproject ফোল্ডারে চারটা পাইথন মডিউল আছে, সেগুলোর সাথে একটু পরিচিত হয়ে নেই! __init__.py খালি ফাইল, ভিতরে কোড নেই! কোন ফোল্ডারকে পাইথন প্যাকেজ বানানোর জন্য এটা থাকে! Settings.py নাম দেখেই বোঝা যাচ্ছে, প্রোজেক্টের সব সেটিংসগুলো এই ফাইলে থাকবে। Urls.py ওয়েবসাইটের ইউআরএল গুলো এখানে ডিফাইন করা থাকবে! এসম্পর্কে আমরা পরে বিস্তারিত জানব। Wsgi.py সার্ভার সেটিংস, মাথা ঘামানোর দরকার নেই। প্রোজেক্ট ডেপ্লয় করার সময় লাগবে।এছাড়াও বাইরের manage.py মডিউলটি খুবই গুরুত্বপুর্ন! এখন থেকে আমাদের প্রায় সকল কমান্ডগুলই এই মডিউলের মাধ্যমে করতে হবে!
+#Run Server
+1. cd কমান্ড দিয়ে প্রোজেক্ট ফোল্ডারটিকে (যেটার ভিতর manage.py মডিউল রয়েছে) কারেন্ট ওয়ার্কিং ডিরেক্টরি হিসেবে সেট করুন!(virtual environment have to be activated befor)
+2. Run the serever [python3 manage.py runserver]
+3. Visit [http://127.0.0.1:8000/] from a browser.
+
+##Create new app:
+1. At first, activate the virtual environment
+2. Go to the  project folder containing manage.py
+3. Create app [python3 manage.py startapp <appName>]
+	নতুন একটি ফোল্ডার তৈরি হবে, সেটাই অ্যাপ ফোল্ডার। ফোল্ডারটির ভিতরে কয়েকটি পাইথন ফাইল দেখতে পাবেন, সেগুলোঃ
+১\) migrations নামে একটি ফোল্ডার দেখবেন, ইগনোর করুন! ২\) __init__.py ফাকা ফাইল! এই ফোল্ডারটিকে পাইথন প্যাকেজ বানানোর জন্য। ৩\) admin.py এডমিন অ্যাপ সম্পর্কিত সেটিংসগুলো এখানে থাকবে, এডমিন বিষয়ে সামনে জানতে পারব! ৪\) apps.py এই অ্যাপ স্পেসিফিক সেটিংস গুলো এই ফাইলে থাকবে। ৫\) models.py মডেল এর কথা মনে আছেতো!? এমটিভি প্যাটার্নের মডেল। আপনার অ্যাপ এর সকল মডেল এই ফাইলে থাকবে। ৬\) tests.py প্রাথমিক ভাবে জ্যাঙ্গোকে যতই কঠিন আর গোজামিল টাইপের মনে হোক না কেন, জ্যাঙ্গো আসলে খুবই অর্গানাইজড এবং বেস্ট প্র্যাকটিস ফলো করে তৈরি একটা ফ্রেমওয়ার্ক! তাই জ্যাঙ্গো সব সময় চায় যে তার \(ব্যবহারকারী\) ডেভেলপারগনও সবসময় বেস্ট প্র্যাকটিস ফলো করবে... আর কোড টেস্টিং বা ইউনিট টেস্টিং হল বেস্ট প্র্যাকটিসের অন্যতম একটা অংশ! ইউনিট টেস্ট বা টেস্টিং কোডগুলো লেখার জন্য জ্যাঙ্গো অটোমেটিক আপনার জন্য এই ফাইল তৈরি করে দেয়!!! ৭\) views.py ভিউ, আপনার ওয়েবসাইটের কেন্দ্রবিন্দু... এই ফাইলেই সকল ভিউ তৈরি করা হবে!
+4. Add the app name in[djangoProject/settings.py -> INSTALLED_APPS list]
+	যখন আপনি কোন অ্যাপ তৈরি করেন, অথবা অন্য কোথাও থেকে নিয়ে আসেন সেটা অটোমেটিক জ্যাঙ্গোতে এড হয়ে যায়না! ম্যানুয়ালি এড করে নিতে হয়।
+5. Go to [djangoProject(includes the app)/app/views.py] and add function like this:
+	[
+	def index(request):
+    return HttpResponse("Hello User, Welcome!")
+    ]
+    Also, add [HttpResponse] in import list(line 1)
+6. Go to [djangoProject(include the app)/app/urls.py] and import the prewritten index function.[from <appName>.views import <functionName>]
+	Also add a url mapper in urlpatterns[url('<mapperWord>,<viewsSource>)
+	Now you should see the string in the browser.
+7. We can use template for HTML file
+	Create the HTML file in [djangoproject/app/templates(create if not exists, folder name must be same)/]
+	Now update the index function in [app/views.py] using render like this:
+	[
+	def index(request):
+    return render(request, "index.html")
+    ](if [render] is not imported in the views.py file, import it)
+
+##Database Management:
+	* In django model is used to manage database easily. In backend of it, sqLite is used as the database which exists by default in python. If you want to use a different database, you have to configure it in [djangoProject/settings.py].
+#Create Model:
+1. Edit the [app/models.py] file like this:	
+	[
+	from django.db import models
+	
+	# Create your models here.
+	class Message(models.Model):
+		text = models.TextField()
+
+		def __str__(self):
+		    return self.text  
+	]
+2. Run [python manage.py makemigrations] to detect and make a file for the updates
+	*প্রতিবারই আপনি কোন মডেল তৈরি করলে অথবা মডেলের কোন ফিল্ড/এট্রিবিউট পরিবর্তন করলে আপনাকে কমান্ড প্রম্পট বা টার্মিনালে কমান্ডটি দিতে হবে। এতে করে প্রতিবারই আপনার অ্যাপ ফোল্ডারে থাকা migrations ফোল্ডারে একটি মাইগ্রেশন নাম্বার যুক্ত পাইথন ফাইল তৈরি হবে। যেটা ভার্শন কন্ট্রোল করাতে খুবই কাজের। সেই ফাইলের ভিতরে যে কোডগুলো থাকবে সেটা আসলে আপনার ডাটাবেইজ এর সিকুয়েল কোড কেমন হবে তারই একটা প্রতিরূপ! এর উপর ভিত্তি করেই আপনার ডাটাবেইজ টেবিল/কলাম/ডাটা তৈরি হবে।
+3. Run [python manage.py migrate] to update the database based on the latest file created in step2[app/migrations]
+4. Add data: [<className>.objects.create(<columnName>=<data>)
+	See all data: [<className>.objects.all()]
+	Query: [<className>.objects.get(<fieldName>=<value>)]
+	Count number of row: [<className>.objects.all().count()]
+5. Use model in a view:
+	import the class from models.py[from <appName>.models import <className>]
+	pass the class to html file using render
+	  [return render(request, "index.html", {"messages": all_messages})]
+	  
+## Admin Pannel:
+1. Create a super user [python3 manage.py createsuperuser]
+	Enter UserName, E-mail, Password
+2. Edit [app/admins.py] 
+	Import models and register them to show in the admin page:
+	[
+	from . import models
+	admin.site.register(models.Message)
+	]

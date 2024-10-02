@@ -1,0 +1,35 @@
+SETUP DJANGO:
+1. Create project folder
+2. Create vertual environment (python -m venv <venvName>)
+3. Activate Vertual environment(<venvName>\Scripts\activate.bat)
+4. Install Django(python -m pip install Django)
+5. Start the project(django-admin startproject <projectName>)
+6. Run server on browser(python manage.py runserver)
+
+CREATE AN DJANGO APP:
+1. create the app(python manage.py startapp <appName>)
+2. Add data in <appName>/views.py using function and importing HttpResponse(
+	from django.http import HttpResponse
+	
+	def index(request):
+	    return HttpResponse("Hello, world. You're at the polls index.")
+)
+3. Create urls.py in the app derectory
+4. In the <appName>/urls.py import views and add urlpattern(
+	from django.urls import path
+	from . import views
+
+	urlpatterns = [
+	    path("", views.index, name="index"),
+	]
+)
+5. In the <projectName>/urls.py import include and add the path <appName>.urls(
+	from django.contrib import admin
+	from django.urls import include, path
+
+	urlpatterns = [
+	    path("polls/", include("polls.urls")),
+	    path("admin/", admin.site.urls),
+	]
+)
+NOTE: run the server each time after updating any file(python manage.py runserver)
