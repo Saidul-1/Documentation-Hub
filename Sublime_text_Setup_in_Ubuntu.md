@@ -23,22 +23,11 @@
   c. Paste the following code into the file and save it as CP.sublime-build:
 ```
 {
- "cmd":["bash", "-c", "g++ -std=c++14 -Wall '${file}' -o '${file_path}/${file_base_name}' && timeout 0.5s '${file_path}/${file_base_name}'"],
- "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
- "working_dir": "${file_path}",
- "selector": "source.c, source.c++",
- "variants":
- [
-   {
- 	"name": "Run with C++14",
- 	"cmd":["bash", "-c", "g++ -std=c++14 '${file}' -o '${file_path}/${file_base_name}' && timeout 0.5s '${file_path}/${file_base_name}' <input.txt >output.txt"]
-   },
-   {
- 	"name": "Run with C++17",
- 	"cmd": ["bash", "-c", "g++ -std=c++17 '${file}' -o '${file_path}/${file_base_name}' && timeout 0.5s '${file_path}/${file_base_name}' <input.txt >output.txt"]
-
-  }
- ]
+"cmd": ["g++ -std=c++20 -fsanitize=undefined -g -Wall -Wshadow $file_name -o $file_base_name && time -p timeout 5s ./$file_base_name < input.txt > output.txt"], 
+"selector": "source.c, source.c++",
+"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+"working_dir": "$file_path",
+"shell": true,
 }
 ```
 6.  Changing layout for I/O operations:
